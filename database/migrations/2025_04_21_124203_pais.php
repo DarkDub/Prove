@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rols', function (Blueprint $table) {
+        Schema::create('pais', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 30);
-            $table->string('descripcion', 30);
-            $table->string('estado', 1)->default('A');
-            $table->foreignId('padre')->nullable()->constrained('rols');
-            $table->timestamps();
+            $table->string('pais_codigo', 50);
+            $table->string('nombre');
+            $table->timestamp('created_at')->useCurrent(); // Cambia 'create_at' por 'created_at'
+            $table->timestamp('updated_at')->useCurrent(); // Cambia 'update_at' por 'updated_at'
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rols');
+        Schema::dropIfExists('pais');
     }
 };

@@ -22,7 +22,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
 }
 
 .table-container {
@@ -47,4 +46,14 @@ body {
 
 #modalAgregar {
     transition: 0.2s;
+}
+
+.formEdit {
+    width: 50%;
+    margin: auto;
+    border: 2px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    height: auto;
 }
