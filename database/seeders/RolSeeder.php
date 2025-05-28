@@ -14,21 +14,25 @@ class RolSeeder extends Seeder
     public function run(): void
     {
         DB::table('rols')->insert([
+            'id' => 1, // Asignamos el ID de manera explícita
             'nombre' => 'SuperAdministrador',
             'descripcion' => 'Todos los permisos',
-            'padre' => 1,
+            'padre' => null, // Esto es opcional, si no es un subrol
         ]);
 
-
         DB::table('rols')->insert([
+            'id' => 2, // Asignamos el ID de manera explícita
             'nombre' => 'Normal',
             'descripcion' => 'navegar',
-            'padre' => 2,
+            'padre' => 1, // Relacionado con el rol "SuperAdministrador"
         ]);
+
         DB::table('rols')->insert([
+            'id' => 3, // Asignamos el ID de manera explícita
             'nombre' => 'Operador',
             'descripcion' => 'Restringido',
-            'padre' => 3,
+            'padre' => 2, // Relacionado con el rol "Normal"
         ]);
     }
 }
+

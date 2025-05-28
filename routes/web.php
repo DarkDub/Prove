@@ -6,10 +6,12 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PruebasMapaController;
+use App\Http\Controllers\PruebasTrabajadores;
+use App\Models\Trabajadores;
 
 // Página principal
 Route::get('/', function () {
-    return view('welcome');
+    return view('pruebas.hola');
 });
 
 // Página principal personalizada
@@ -40,4 +42,31 @@ Route::get('/mapa', function () {
 
     // Pasamos las coordenadas a la vista
     return view('pruebas.pruebas', compact('userCoords', 'workerCoords'));
+});
+
+Route::get('/h', function () {
+    return view('pruebas.hola');
+});
+
+Route::get('/ma', function () {
+    return view('pruebas.index');
+});
+Route::get('/t', function () {
+    return view('pruebas.tra');
+});
+Route::get('/m', function () {
+    return view('pruebas.tra');
+});
+Route::resource('workers', PruebasTrabajadores::class);
+// routes/web.php
+
+
+Route::get('/trabajadores', function () {
+    // Obtener todos los trabajadores
+    $trabajadores = Trabajadores::all(); // O puedes usar otro filtro si necesitas, como ->whereNotNull('latitude')
+    
+    // Pasar los trabajadores a la vista
+
+    return view('pruebas.tra', compact('trabajadores'));
+
 });

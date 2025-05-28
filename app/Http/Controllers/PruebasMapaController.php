@@ -3,13 +3,19 @@
 // app/Http/Controllers/PruebasMapaController.php
 
 namespace App\Http\Controllers;
-
+use App\Models\Clientes;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class PruebasMapaController extends Controller
 {
     public function index()
     {
+        $users = Clientes::with(['pais', 'departamento', 'municipio'])
+        ->where('estado', 'A')
+        ->get();
+
+
         $cliente = ['lat' => 4.710989, 'lng' => -74.072090];
         $trabajador = ['lat' => 4.653332, 'lng' => -74.083652];
         $distancia = $this->calcularDistancia(
@@ -17,7 +23,7 @@ class PruebasMapaController extends Controller
             $trabajador['lat'], $trabajador['lng']
         );
 
-        return view('pruebas.pruebas', compact('cliente', 'trabajador', 'distancia'));
+        return view('pruebas.pruebas', compact('cliente', 'trabajador', 'distancia', 'users'));
     }
 
     private function calcularDistancia($lat1, $lon1, $lat2, $lon2)

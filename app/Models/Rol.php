@@ -22,6 +22,9 @@ class Rol extends Model
     {
         return $this->hasmany(Rol::class, 'padre');
     }
+    
+    
+
 
 //     public function adminUsers()
 //     {
