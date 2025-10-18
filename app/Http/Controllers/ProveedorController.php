@@ -25,9 +25,6 @@ class ProveedorController extends Controller
         //
     }
 
-    public function mount(){
-        
-    }
 
     public function Eliminados()
     {
